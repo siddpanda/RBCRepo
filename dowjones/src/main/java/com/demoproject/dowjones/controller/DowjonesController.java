@@ -42,7 +42,7 @@ public class DowjonesController {
 	 public List<Stock> getStock(@PathVariable(name="ticker") String name) {
 		LOGGER.debug("getStock",name);
 		List<Stock> retVal= dowjonesService.getStock(name);
-		if (retVal==null) throw new StockNotFoundException("No stock found with ticker :"+ name);
+		if (retVal==null || retVal.isEmpty()) throw new StockNotFoundException("No stock found with ticker :"+ name);
 		return retVal;
 	  }
 	
